@@ -1,5 +1,7 @@
 #!/bin/sh
 
+WIN_NAME="HikvisionCamera"
+
 if ! [ -x "$(command -v ffplay)" ]; then
   echo '"ffplay could not be found! Please install ffmpeg"' >&2
   exit 1
@@ -11,6 +13,6 @@ if [ "$#" -lt 3 ]; then
   exit 2
 fi
 
-ffplay rtsp://$1:$2@$3:554/Streaming/Channels/101/
+ffplay -window_title $WIN_NAME rtsp://$1:$2@$3:554/Streaming/Channels/101/
 
 exit 0
